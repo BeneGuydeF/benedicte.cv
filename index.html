@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV – Bénédicte de Feuardent</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --teal: #1d6a6a;
+    --teal-light: #2a8a8a;
+    --teal-pale: #e8f4f4;
+    --warm: #f5f0e8;
+    --mid: #6b7280;
+    --line: #d0dedd;
+    --accent: #c9a84c;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f0ede8;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    color: var(--ink);
+  }
+
+  .page {
+    width: 900px;
+    background: white;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.12), 0 4px 20px rgba(0,0,0,0.06);
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    min-height: 1100px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── SIDEBAR ─── */
+  .sidebar {
+    background: var(--ink);
+    color: white;
+    padding: 40px 28px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .sidebar::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: rgba(29,106,106,0.25);
+    pointer-events: none;
+  }
+  .sidebar::after {
+    content: '';
+    position: absolute;
+    bottom: 80px; left: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+    pointer-events: none;
+  }
+
+  /* Photo */
+  .photo-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .photo-circle {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    border: 3px solid var(--teal-light);
+    background: linear-gradient(135deg, var(--teal) 0%, #0f3d3d 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 300;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 2px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .photo-circle img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+  }
+
+  .name-block { text-align: center; }
+  .name-first {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: white;
+    line-height: 1;
+  }
+  .name-last {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px; font-weight: 300;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
+  .name-title {
+    font-size: 10px; font-weight: 300;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+    text-transform: uppercase;
+  }
+
+  /* Sidebar sections */
+  .s-section { display: flex; flex-direction: column; gap: 10px; }
+  .s-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(29,106,106,0.4);
+  }
+
+  /* Contact */
+  .contact-item {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 11.5px; color: rgba(255,255,255,0.8);
+    line-height: 1.4;
+  }
+  .contact-icon {
+    width: 18px; height: 18px;
+    background: rgba(29,106,106,0.35);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 9px;
+  }
+
+  /* Compétences */
+  .skills-group { margin-bottom: 10px; }
+  .skills-group-title {
+    font-size: 9px; font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 5px;
+  }
+  .skill-tag {
+    display: inline-block;
+    font-size: 10.5px; color: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 3px;
+    padding: 3px 7px;
+    margin: 2px 2px 2px 0;
+    line-height: 1.4;
+  }
+
+  /* Langues */
+  .lang-item { margin-bottom: 8px; }
+  .lang-name {
+    font-size: 12px; color: white; font-weight: 400;
+  }
+  .lang-level {
+    font-size: 10px; color: rgba(255,255,255,0.4);
+    font-style: italic;
+  }
+  .lang-dots { display: flex; gap: 4px; margin-top: 4px; }
+  .lang-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    border: 1px solid var(--teal-light);
+  }
+  .lang-dot.filled { background: var(--teal-light); }
+
+  /* Formation */
+  .edu-item { margin-bottom: 10px; }
+  .edu-degree {
+    font-size: 11px; color: white; font-weight: 400; line-height: 1.4;
+  }
+  .edu-school {
+    font-size: 10px; color: rgba(255,255,255,0.4); margin-top: 2px;
+    font-style: italic;
+  }
+
+  /* Certif & Divers */
+  .small-item {
+    font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.5;
+  }
+  .small-item + .small-item { margin-top: 4px; }
+
+  /* ─── MAIN ─── */
+  .main {
+    padding: 44px 44px 44px 44px;
+    display: flex; flex-direction: column; gap: 32px;
+  }
+
+  .intro-block {
+    padding-bottom: 28px;
+    border-bottom: 2px solid var(--teal-pale);
+    position: relative;
+  }
+  .intro-block::before {
+    content: '';
+    display: block;
+    width: 36px; height: 3px;
+    background: var(--accent);
+    margin-bottom: 14px;
+  }
+  .intro-text {
+    font-size: 13.5px; line-height: 1.75;
+    color: #3a3a4a;
+    font-weight: 300;
+  }
+
+  /* Section header */
+  .section-header {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--ink);
+    letter-spacing: 0.5px;
+  }
+  .section-line {
+    flex: 1; height: 1px;
+    background: linear-gradient(to right, var(--line), transparent);
+  }
+
+  /* Job */
+  .job {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0 16px;
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid var(--teal-pale);
+    position: relative;
+  }
+  .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .job::before {
+    content: '';
+    position: absolute;
+    left: -44px; top: 7px;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid white;
+    box-shadow: 0 0 0 1px var(--teal);
+  }
+
+  .job-left { grid-column: 1; }
+  .job-right { grid-column: 2; text-align: right; }
+
+  .job-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px; font-weight: 600;
+    color: var(--ink);
+  }
+  .job-company {
+    font-size: 12px; font-weight: 500;
+    color: var(--teal);
+    margin-top: 1px;
+  }
+  .job-period {
+    font-size: 10.5px; color: var(--mid);
+    white-space: nowrap;
+    margin-top: 5px;
+  }
+  .job-location {
+    font-size: 10px; color: var(--mid);
+    font-style: italic; margin-top: 2px;
+  }
+
+  .job-bullets {
+    grid-column: 1 / -1;
+    margin-top: 10px;
+    padding-left: 0;
+    list-style: none;
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .job-bullets li {
+    font-size: 12.5px; line-height: 1.6;
+    color: #3a3a4a;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .job-bullets li::before {
+    content: '—';
+    color: var(--teal-light);
+    flex-shrink: 0;
+    font-weight: 400;
+    margin-top: 1px;
+  }
+
+  /* Timeline connector */
+  .exp-section {
+    position: relative;
+    padding-left: 28px;
+  }
+  .exp-section::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--teal), rgba(29,106,106,0.1));
+  }
+
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="photo-wrap">
+      <div class="photo-circle"><img src="photo.jpeg" alt="Bénédicte de Feuardent"></div>
+      <div class="name-block">
+        <div class="name-first">Bénédicte</div>
+        <div class="name-last">de Feuardent</div>
+        <div class="name-title">Ingénieur projet exploitation – géosciences</div>
+      </div>
+    </div>
+
+    <!-- Contact -->
+    <div class="s-section">
+      <div class="s-label">Contact</div>
+      <div class="contact-item">
+        <span class="contact-icon">📞</span>
+        06 01 05 34 58
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✉</span>
+        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e082858e8584898394858485868595819284858e94a0878d81898cce838f8d">[email&#160;protected]</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📍</span>
+        Périgueux, France
+      </div>
+    </div>
+
+    <!-- Compétences -->
+    <div class="s-section">
+      <div class="s-label">Compétences</div>
+
+      <div class="skills-group">
+        <div class="skills-group-title">Analyse & données</div>
+        <span class="skill-tag">Analyse de données industrielles</span>
+        <span class="skill-tag">Structuration de données</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Matlab</span>
+        <span class="skill-tag">Excel</span>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-title">Exploitation / terrain</div>
+        <span class="skill-tag">Planification opérationnelle</span>
+        <span class="skill-tag">Suivi de chantier / activité</span>
+        <span class="skill-tag">Coordination prestataires</span>
+        <span class="skill-tag">Sens des contraintes HSE</span>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-title">Industrie & process</div>
+        <span class="skill-tag">Optimisation de process</span>
+        <span class="skill-tag">Gestion de projet industriel</span>
+        <span class="skill-tag">Coordination opérationnelle</span>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-title">Géosciences</div>
+        <span class="skill-tag">ArcGIS</span>
+        <span class="skill-tag">ArcMap</span>
+        <span class="skill-tag">Analyse sismique</span>
+      </div>
+
+      <div class="skills-group">
+        <div class="skills-group-title">Gestion</div>
+        <span class="skill-tag">Suivi de performance (KPI)</span>
+        <span class="skill-tag">Tableaux de bord & reporting</span>
+        <span class="skill-tag">Amélioration continue</span>
+      </div>
+    </div>
+
+    <!-- Langues -->
+    <div class="s-section">
+      <div class="s-label">Langues</div>
+      <div class="lang-item">
+        <div class="lang-name">Français</div>
+        <div class="lang-level">Langue maternelle</div>
+        <div class="lang-dots">
+          <span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          <span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          <span class="lang-dot filled"></span>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">Anglais</div>
+        <div class="lang-level">Courant</div>
+        <div class="lang-dots">
+          <span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          <span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          <span class="lang-dot"></span>
+        </div>
+      </div>
+      <div class="lang-item">
+        <div class="lang-name">Espagnol</div>
+        <div class="lang-level">Professionnel</div>
+        <div class="lang-dots">
+          <span class="lang-dot filled"></span><span class="lang-dot filled"></span>
+          <span class="lang-dot filled"></span><span class="lang-dot"></span>
+          <span class="lang-dot"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formation -->
+    <div class="s-section">
+      <div class="s-label">Formation</div>
+      <div class="edu-item">
+        <div class="edu-degree">Master 2 Sciences de l'Univers, Environnement, Écologie<br><em style="color:var(--accent); font-style:normal; font-size:10px;">Option physique pétrole</em></div>
+        <div class="edu-school">UPMC · Mines de Paris · IFP</div>
+      </div>
+      <div class="edu-item">
+        <div class="edu-degree">CPGE MPSI</div>
+        <div class="edu-school">École Nationale de Chimie, Physique et Biologie, Paris</div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="s-section">
+      <div class="s-label">Certifications</div>
+      <div class="small-item">BOSIET – HUET offshore</div>
+    </div>
+
+    <!-- Divers -->
+    <div class="s-section">
+      <div class="s-label">Divers</div>
+      <div class="small-item">Alpinisme · Voile · Chant lyrique</div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- Intro -->
+    <div class="intro-block">
+      <p class="intro-text">
+        Ingénieur en géosciences avec expérience en environnement terrain exigeant (offshore) et en pilotage opérationnel. Compétences en planification, coordination d'activités, suivi de production et analyse de données. Souhaite s'investir dans l'exploitation et la gestion opérationnelle d'un site industriel ou de carrière, avec une forte appétence pour le terrain et l'organisation des activités.
+      </p>
+    </div>
+
+    <!-- Expérience -->
+    <div>
+      <div class="section-header">
+        <span class="section-title">Expérience professionnelle</span>
+        <span class="section-line"></span>
+      </div>
+
+      <div class="exp-section">
+
+        <!-- Développement numérique & IA -->
+        <div class="job">
+          <div class="job-left">
+            <div class="job-title">Développement numérique &amp; IA</div>
+          </div>
+          <div class="job-right">
+            <div class="job-period">2023 – Aujourd'hui</div>
+          </div>
+          <ul class="job-bullets">
+            <li>Architecture et structuration de bases de données, dashboards et supervision d'activité</li>
+            <li>Développement d'outils numériques de pilotage et de suivi opérationnel</li>
+          </ul>
+        </div>
+
+        <!-- Fondatrice & Dirigeante -->
+        <div class="job">
+          <div class="job-left">
+            <div class="job-title">Fondatrice &amp; Dirigeante</div>
+            <div class="job-company">En Confiance</div>
+          </div>
+          <div class="job-right">
+            <div class="job-period">2021 – 2025</div>
+          </div>
+          <ul class="job-bullets">
+            <li>Management d'une équipe de 10 collaborateurs (8 opérationnels, 2 fonctions support)</li>
+            <li>Pilotage opérationnel avec suivi d'indicateurs (KPI, performance, optimisation des ressources)</li>
+            <li>Structuration des process, standardisation des pratiques et amélioration continue</li>
+            <li>Prise de décision opérationnelle quotidienne en environnement contraint</li>
+            <li>Planification des équipes et organisation des interventions</li>
+          </ul>
+        </div>
+
+        <!-- Enseignante -->
+        <div class="job">
+          <div class="job-left">
+            <div class="job-title">Enseignante Sciences</div>
+            <div class="job-company">Ste Jeanne Élisabeth, Paris 7</div>
+          </div>
+          <div class="job-right">
+            <div class="job-period">2016 – 2018</div>
+          </div>
+          <ul class="job-bullets">
+            <li>Vulgarisation et transmission — classes de 5e, 4e, 3e, 2nde, 1ère L</li>
+          </ul>
+        </div>
+
+        <!-- Géophysicienne Offshore -->
+        <div class="job">
+          <div class="job-left">
+            <div class="job-title">Géophysicienne Offshore</div>
+            <div class="job-company">CGG</div>
+          </div>
+          <div class="job-right">
+            <div class="job-period">2013 – 2015</div>
+            <div class="job-location">Caraïbes · Mexique · Colombie · États-Unis</div>
+          </div>
+          <ul class="job-bullets">
+            <li>Analyse et traitement de données géophysiques et industrielles</li>
+            <li>Suivi de production et reporting technique</li>
+            <li>Coordination d'opérations terrain en environnement contraint</li>
+            <li>Travail en conditions de sécurité élevées</li>
+            <li>Priorisation des actions selon criticité opérationnelle</li>
+            <li>Suivi des contraintes de production et respect des délais opérationnels</li>
+          </ul>
+        </div>
+
+        <!-- Stage M2 -->
+        <div class="job">
+          <div class="job-left">
+            <div class="job-title">Stage de recherche M2</div>
+            <div class="job-company">Mines de Paris · ANDRA</div>
+          </div>
+          <div class="job-right">
+            <div class="job-period">2012</div>
+            <div class="job-location">Espagne, Boltaña</div>
+          </div>
+          <ul class="job-bullets">
+            <li>Modélisation du stockage géologique du CO₂</li>
+            <li>Publication scientifique et présentat
